@@ -1,72 +1,59 @@
 class QuizApp {
-    constructor(questions) {
-        this.questions = questions;
+    constructor() {
+        this.questions = [];
         this.currentQuestionIndex = 0;
         this.score = 0;
-        this.answers = [];
+        this.userAnswers = {};
     }
 
-    // Method to handle navigation to the next question
-    nextQuestion() {
-        if (this.currentQuestionIndex < this.questions.length - 1) {
-            this.currentQuestionIndex++;
-        }
+    addQuestion(question) {
+        this.questions.push(question);
     }
 
-    // Method to handle navigation to the previous question
-    previousQuestion() {
-        if (this.currentQuestionIndex > 0) {
-            this.currentQuestionIndex--;
-        }
-    }
-
-    // Method to submit an answer
-    submitAnswer(answer) {
-        this.answers[this.currentQuestionIndex] = answer;
-        this.calculateScore();
-    }
-
-    // Method to calculate score based on submitted answers
-    calculateScore() {
-        this.score = this.answers.reduce((acc, answer, index) => {
-            if (this.questions[index].correctAnswer === answer) {
-                return acc + 1; // Increment score for correct answer
-            }
-            return acc;
-        }, 0);
-    }
-
-    // Method to display results
-    displayResults() {
-        const resultContainer = document.getElementById('results');
-        resultContainer.innerHTML = `<h2>Your score: ${this.score} / ${this.questions.length}</h2>`;
-        this.questions.forEach((question, index) => {
-            const explanation = question.explanation ? `<p>Explanation: ${question.explanation}</p>` : '';
-            resultContainer.innerHTML += `<div><h3>Question ${index + 1}:</h3><p>Your answer: ${this.answers[index]}</p>${explanation}</div>`;
+    displayQuestion() {
+        const question = this.questions[this.currentQuestionIndex];
+        console.log(`Question ${this.currentQuestionIndex + 1}: ${question.text}`);
+        question.options.forEach((option, index) => {
+            console.log(`${index + 1}. ${option}`);
         });
     }
-}
 
-// Example usage:
-const questions = [
-    {
-        question: 'What is the capital of France?',
-        type: 'STANDARD_MCQ',
-        options: ['Paris', 'London', 'Rome'],
-        correctAnswer: 'Paris',
-        explanation: 'Paris is the capital of France.'
-    },
-    {
-        question: 'Match the countries with their capitals.',
-        type: 'MATCHING',
-        pairs: {
-            'France': 'Paris',
-            'Italy': 'Rome'
-        },
-        correctAnswer: ['Paris', 'Rome'],
-        explanation: 'France capital is Paris and Italy capital is Rome.'
+    answerQuestion(answer) {
+        const question = this.questions[this.currentQuestionIndex];
+        this.userAnswers[this.currentQuestionIndex] = answer;
+        if (answer === question.correctAnswer) {
+            this.score++;
+        }
+        this.currentQuestionIndex++;
     }
-    // Add other question types as needed
-];
 
-const quizApp = new QuizApp(questions);
+    calculateScore() {
+        return (this.score / this.questions.length) * 100;
+    }
+
+    displayResults() {
+        console.log(`Your score is: ${this.calculateScore()}%`);
+    }
+
+    handleQuestionType(question) {
+        switch (question.type) {
+            case 'STANDARD_MCQ':
+                this.addQuestion(question);
+                break;
+            case 'MATCHING':
+                // Handle matching question logic
+                break;
+            case 'MULTI_SELECT_COLUMNS':
+                // Handle multi-select column logic
+                break;
+            case 'MULTI_SELECT_ROWS':
+                // Handle multi-select row logic
+                break;
+            case 'SELECT_TWO':
+                // Handle select two question logic
+                break;
+            default:
+                throw new Error('Unknown question type');
+        }
+    }
+}
