@@ -3,47 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQ Quiz Interface</title>
+    <title>Dynamic Quiz Interface</title>
     <style>
-        body {
-            display: flex;
-            font-family: Arial, sans-serif;
-        }
-        .case-study {
-            width: 50%;
-            padding: 20px;
-            border-right: 1px solid #ccc;
-        }
-        .question {
-            width: 50%;
-            padding: 20px;
-        }
-        h2 {
-            color: #333;
-        }
+        body { font-family: Arial, sans-serif; display: flex; }
+        #case-study { flex: 1; padding: 20px; border-right: 1px solid #ccc; }
+        #questions { flex: 1; padding: 20px; }
+        button { margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="case-study">
+    <div id="case-study">
         <h2>Case Study</h2>
-        <p>This is where the case study text will go. It provides context and background information for the quiz questions.</p>
+        <p id="case-text">Case study content goes here...</p>
     </div>
-    <div class="question">
-        <h2>Quiz Question</h2>
-        <p>What is the main concept discussed in the case study?</p>
-        <label>
-            <input type="radio" name="answer" value="a"> Option A
-        </label><br>
-        <label>
-            <input type="radio" name="answer" value="b"> Option B
-        </label><br>
-        <label>
-            <input type="radio" name="answer" value="c"> Option C
-        </label><br>
-        <label>
-            <input type="radio" name="answer" value="d"> Option D
-        </label><br>
-        <button>Submit Answer</button>
+    <div id="questions">
+        <h2>Questions</h2>
+        <form id="quiz-form">
+            <div id="question-container">
+                <div class="question">
+                    <p>Question 1: What is ...?</p>
+                    <input type="text" name="answer1" placeholder="Your answer..." />
+                </div>
+                <div class="question">
+                    <p>Question 2: Choose one:</p>
+                    <label><input type="radio" name="answer2" value="A"> A</label>
+                    <label><input type="radio" name="answer2" value="B"> B</label>
+                    <label><input type="radio" name="answer2" value="C"> C</label>
+                </div>
+                <div class="question">
+                    <p>Question 3: Select multiple:</p>
+                    <label><input type="checkbox" name="answer3" value="A"> A</label>
+                    <label><input type="checkbox" name="answer3" value="B"> B</label>
+                    <label><input type="checkbox" name="answer3" value="C"> C</label>
+                </div>
+            </div>
+            <button type="submit">Submit Answers</button>
+        </form>
     </div>
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Answers submitted!');
+        });
+    </script>
 </body>
 </html>
