@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz Interface</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        .case-study {
+            width: 50%;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+        .question {
+            width: 50%;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="case-study">
+        <h2>Case Study</h2>
+        <p>This is where the case study text will go. It provides context and background information for the quiz questions.</p>
+    </div>
+    <div class="question">
+        <h2>Quiz Question</h2>
+        <p>What is the main concept discussed in the case study?</p>
+        <label>
+            <input type="radio" name="answer" value="a"> Option A
+        </label><br>
+        <label>
+            <input type="radio" name="answer" value="b"> Option B
+        </label><br>
+        <label>
+            <input type="radio" name="answer" value="c"> Option C
+        </label><br>
+        <label>
+            <input type="radio" name="answer" value="d"> Option D
+        </label><br>
+        <button>Submit Answer</button>
+    </div>
+</body>
+</html>
