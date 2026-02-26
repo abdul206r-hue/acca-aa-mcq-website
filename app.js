@@ -1,47 +1,72 @@
-// JavaScript logic for quiz flow, tracking, random selection, and results
+class QuizApp {
+    constructor(questions) {
+        this.questions = questions;
+        this.currentQuestionIndex = 0;
+        this.score = 0;
+        this.answers = [];
+    }
 
-const quizData = [
-    { question: 'What is the capital of France?', answers: ['Berlin', 'Madrid', 'Paris', 'Rome'], correct: 2 },
-    { question: 'Which planet is known as the Red Planet?', answers: ['Earth', 'Mars', 'Jupiter', 'Venus'], correct: 1 },
-    { question: 'Who wrote "To Kill a Mockingbird"?', answers: ['Harper Lee', 'Mark Twain', 'J.K. Rowling', 'Ernest Hemingway'], correct: 0 },
-    // Add more questions as needed
+    // Method to handle navigation to the next question
+    nextQuestion() {
+        if (this.currentQuestionIndex < this.questions.length - 1) {
+            this.currentQuestionIndex++;
+        }
+    }
+
+    // Method to handle navigation to the previous question
+    previousQuestion() {
+        if (this.currentQuestionIndex > 0) {
+            this.currentQuestionIndex--;
+        }
+    }
+
+    // Method to submit an answer
+    submitAnswer(answer) {
+        this.answers[this.currentQuestionIndex] = answer;
+        this.calculateScore();
+    }
+
+    // Method to calculate score based on submitted answers
+    calculateScore() {
+        this.score = this.answers.reduce((acc, answer, index) => {
+            if (this.questions[index].correctAnswer === answer) {
+                return acc + 1; // Increment score for correct answer
+            }
+            return acc;
+        }, 0);
+    }
+
+    // Method to display results
+    displayResults() {
+        const resultContainer = document.getElementById('results');
+        resultContainer.innerHTML = `<h2>Your score: ${this.score} / ${this.questions.length}</h2>`;
+        this.questions.forEach((question, index) => {
+            const explanation = question.explanation ? `<p>Explanation: ${question.explanation}</p>` : '';
+            resultContainer.innerHTML += `<div><h3>Question ${index + 1}:</h3><p>Your answer: ${this.answers[index]}</p>${explanation}</div>`;
+        });
+    }
+}
+
+// Example usage:
+const questions = [
+    {
+        question: 'What is the capital of France?',
+        type: 'STANDARD_MCQ',
+        options: ['Paris', 'London', 'Rome'],
+        correctAnswer: 'Paris',
+        explanation: 'Paris is the capital of France.'
+    },
+    {
+        question: 'Match the countries with their capitals.',
+        type: 'MATCHING',
+        pairs: {
+            'France': 'Paris',
+            'Italy': 'Rome'
+        },
+        correctAnswer: ['Paris', 'Rome'],
+        explanation: 'France capital is Paris and Italy capital is Rome.'
+    }
+    // Add other question types as needed
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
-
-// Function to start the quiz
-function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    displayQuestion();
-}
-
-// Function to display the current question
-function displayQuestion() {
-    if (currentQuestionIndex < quizData.length) {
-        const currentQuestion = quizData[currentQuestionIndex];
-        console.log(currentQuestion.question);
-        console.log('Answers: ' + currentQuestion.answers.join(', '));
-    } else {
-        displayResults();
-    }
-}
-
-// Function to handle answer selection
-function selectAnswer(answerIndex) {
-    const currentQuestion = quizData[currentQuestionIndex];
-    if (answerIndex === currentQuestion.correct) {
-        score++;
-    }
-    currentQuestionIndex++;
-    displayQuestion();
-}
-
-// Function to display the results
-function displayResults() {
-    console.log(`Quiz finished! Your score is ${score} out of ${quizData.length}.`);
-}
-
-// Start the quiz when the script is executed
-startQuiz();
+const quizApp = new QuizApp(questions);
