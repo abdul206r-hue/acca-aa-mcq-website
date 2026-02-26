@@ -1,0 +1,63 @@
+/**
+ * General Styles 
+ */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 20px;
+}
+
+/**
+ * Header Styles 
+ */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/**
+ * Question Styles 
+ */
+.question {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+/**
+ * Answer Options 
+ */
+.option {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option:hover {
+    background-color: #e9ecef;
+}
+
+/**
+ * Submit Button Styles 
+ */
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
