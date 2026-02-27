@@ -1,0 +1,67 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>ACCA AA MCQ Quiz</title>  
+    <style>  
+        body { font-family: Arial, sans-serif; }  
+        .question { margin-bottom: 20px; }  
+        .hide { display: none; }  
+        button { margin-top: 10px; }  
+    </style>  
+</head>  
+<body>  
+    <h1>ACCA AA MCQ Quiz</h1>  
+    <div class="question">  
+        <h3>Question 1:</h3>  
+        <p>What is the purpose of an audit?</p>  
+        <button onclick="toggleExplanation('explanation1')">Show/Hide Explanation</button>  
+        <div id="explanation1" class="hide">  
+            <p>The purpose of an audit is to provide assurance that the financial statements are free from material misstatement.</p>  
+        </div>  
+    </div>  
+    <div class="question">  
+        <h3>Question 2:</h3>  
+        <p>Which framework guides the audit process?</p>  
+        <button onclick="toggleExplanation('explanation2')">Show/Hide Explanation</button>  
+        <div id="explanation2" class="hide">  
+            <p>The International Standards on Auditing (ISA) provides a framework for the audit process.</p>  
+        </div>  
+    </div>  
+    <div class="question">  
+        <h3>Question 3:</h3>  
+        <p>What is materiality in audit?<p>  
+        <button onclick="toggleExplanation('explanation3')">Show/Hide Explanation</button>  
+        <div id="explanation3" class="hide">  
+            <p>Materiality is the significance of financial information to users, guiding the audit's information and focus.</p>  
+        </div>  
+    </div>  
+    <div class="question">  
+        <h3>Question 4:</h3>  
+        <p>What is the role of internal controls?</p>  
+        <button onclick="toggleExplanation('explanation4')">Show/Hide Explanation</button>  
+        <div id="explanation4" class="hide">  
+            <p>Internal controls are processes designed to ensure accuracy and prevent fraud in financial reporting.</p>  
+        </div>  
+    </div>  
+    <div class="question">  
+        <h3>Question 5:</h3>  
+        <p>Why is independence important for auditors?</p>  
+        <button onclick="toggleExplanation('explanation5')">Show/Hide Explanation</button>  
+        <div id="explanation5" class="hide">  
+            <p>Independence is crucial for auditors to provide unbiased opinions and maintain credibility.</p>  
+        </div>  
+    </div>  
+    <script>  
+        function toggleExplanation(id) {  
+            var explanation = document.getElementById(id);  
+            if (explanation.classList.contains('hide')) {  
+                explanation.classList.remove('hide');  
+            } else {  
+                explanation.classList.add('hide');  
+            }  
+        }  
+    </script>  
+</body>  
+</html>
