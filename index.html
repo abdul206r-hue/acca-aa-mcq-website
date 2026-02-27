@@ -5,81 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACCA AA MCQ Quiz</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .question { margin-bottom: 20px; }
-        .explanation { display: none; margin-top: 10px; }
-        button { margin-top: 5px; }
+        body { font-family: Arial, sans-serif; }
+        .category { margin: 10px; cursor: pointer; color: blue; }
+        .question { margin: 10px; padding: 10px; border: 1px solid #ccc; display: none; }
+        .explanation { display: none; margin-top: 5px; font-size: 0.9em; color: gray; }
     </style>
 </head>
 <body>
     <h1>ACCA AA MCQ Quiz</h1>
-    <div class="quiz-container">
-        <div class="question">
-            <h2>Category 1 - Question 1</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 1...</div>
-        </div>
-        <div class="question">
-            <h2>Category 1 - Question 2</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 2...</div>
-        </div>
-        <div class="question">
-            <h2>Category 1 - Question 3</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 3...</div>
-        </div>
-        <div class="question">
-            <h2>Category 1 - Question 4</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 4...</div>
-        </div>
-        <div class="question">
-            <h2>Category 1 - Question 5</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 5...</div>
-        </div>
-        <div class="question">
-            <h2>Category 2 - Question 1</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 1...</div>
-        </div>
-        <div class="question">
-            <h2>Category 2 - Question 2</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 2...</div>
-        </div>
-        <div class="question">
-            <h2>Category 2 - Question 3</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 3...</div>
-        </div>
-        <div class="question">
-            <h2>Category 2 - Question 4</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 4...</div>
-        </div>
-        <div class="question">
-            <h2>Category 2 - Question 5</h2>
-            <p>What is the correct answer?</p>
-            <button onclick="toggleExplanation(this)">Show Explanation</button>
-            <div class="explanation">Explanation for Question 5...</div>
-        </div>
+    
+    <div class="categories">
+        <div class="category" onclick="toggleQuestions('category1')">Category 1</div>
+        <div class="category" onclick="toggleQuestions('category2')">Category 2</div>
+        <div class="category" onclick="toggleQuestions('category3')">Category 3</div>
     </div>
+    
+    <div id="category1" class="questions">
+        <div class="question">
+            <p>Question 1: What is the primary role of auditors?</p>
+            <div class="explanation">Full explanation of Question 1.</div>
+        </div>
+        <div class="question">
+            <p>Question 2: What is materiality in auditing?</p>
+            <div class="explanation">Full explanation of Question 2.</div>
+        </div>
+        <!-- Add more questions similarly -->
+    </div>
+    
+    <div id="category2" class="questions">
+        <div class="question">
+            <p>Question 1: Describe the audit risk model.</p>
+            <div class="explanation">Full explanation of Question 1.</div>
+        </div>
+        <!-- Add more questions similarly -->
+    </div>
+
+    <div id="category3" class="questions">
+        <div class="question">
+            <p>Question 1: What are the components of internal control?</p>
+            <div class="explanation">Full explanation of Question 1.</div>
+        </div>
+        <!-- Add more questions similarly -->
+    </div>
+    
     <script>
-        function toggleExplanation(button) {
-            const explanation = button.nextElementSibling;
-            explanation.style.display = explanation.style.display === 'none' || explanation.style.display === '' ? 'block' : 'none';
+        function toggleQuestions(category) {
+            const questions = document.querySelectorAll(`#${category} .question`);
+            questions.forEach(q => {
+                q.style.display = (q.style.display === 'none' || q.style.display === '') ? 'block' : 'none';
+            });
         }
+
+        const explanations = document.querySelectorAll('.question');
+        explanations.forEach(q => {
+            q.addEventListener('click', () => {
+                const explanation = q.querySelector('.explanation');
+                explanation.style.display = (explanation.style.display === 'none' || explanation.style.display === '') ? 'block' : 'none';
+            });
+        });
     </script>
 </body>
 </html>
