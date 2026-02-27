@@ -3,21 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to MCQ Categories</title>
+    <title>ACCA AA MCQ Quiz</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        h1 { margin-top: 50px; }
-        button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .explanation { display: none; margin-top: 10px; }
+        button { margin-top: 5px; }
     </style>
 </head>
 <body>
-    <h1>Welcome to the MCQ Categories</h1>
-    <button>Audit Framework</button>
-    <button>Planning and Risk Assessment</button>
-    <button>Internal Controls</button>
-    <button>Audit Evidence</button>
-    <button>Review and Reporting</button>
-    <br>
-    <button>Random 50 Questions</button>
+    <h1>ACCA AA MCQ Quiz</h1>
+    <div class="quiz-container">
+        <div class="question">
+            <h2>Category 1 - Question 1</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 1...</div>
+        </div>
+        <div class="question">
+            <h2>Category 1 - Question 2</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 2...</div>
+        </div>
+        <div class="question">
+            <h2>Category 1 - Question 3</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 3...</div>
+        </div>
+        <div class="question">
+            <h2>Category 1 - Question 4</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 4...</div>
+        </div>
+        <div class="question">
+            <h2>Category 1 - Question 5</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 5...</div>
+        </div>
+        <div class="question">
+            <h2>Category 2 - Question 1</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 1...</div>
+        </div>
+        <div class="question">
+            <h2>Category 2 - Question 2</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 2...</div>
+        </div>
+        <div class="question">
+            <h2>Category 2 - Question 3</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 3...</div>
+        </div>
+        <div class="question">
+            <h2>Category 2 - Question 4</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 4...</div>
+        </div>
+        <div class="question">
+            <h2>Category 2 - Question 5</h2>
+            <p>What is the correct answer?</p>
+            <button onclick="toggleExplanation(this)">Show Explanation</button>
+            <div class="explanation">Explanation for Question 5...</div>
+        </div>
+    </div>
+    <script>
+        function toggleExplanation(button) {
+            const explanation = button.nextElementSibling;
+            explanation.style.display = explanation.style.display === 'none' || explanation.style.display === '' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
